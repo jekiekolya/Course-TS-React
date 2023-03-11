@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import TodoForm from "./Components/TodoForm/TodoForm";
 
@@ -12,6 +12,12 @@ function App() {
   const [text, setText] = useState("");
   const [todos, setTodos] = useState<Todo[]>([]);
 
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then((res) => res.json())
+      .then((data: Todo[]) => setTodos(data));
+  }, []);
+
   // Handlers
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
@@ -23,7 +29,7 @@ function App() {
       title: text,
       completed: false,
     };
-    
+
     setTodos([...todos, newTodo]);
     setText("");
   };
