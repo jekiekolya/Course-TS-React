@@ -1,10 +1,8 @@
 import React from "react";
 
 // Types
-interface ITodoItemProps {
-  id: string;
-  title: string;
-  completed: boolean;
+import { Todo } from "../../types";
+interface ITodoItemProps extends Todo {
   children?: React.ReactNode;
   style?: React.CSSProperties;
 }
