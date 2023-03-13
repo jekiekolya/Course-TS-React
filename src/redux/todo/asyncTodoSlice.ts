@@ -3,7 +3,7 @@ import todoActions from "./todoOperations";
 
 import { Todo } from "types";
 
-type TodoSlice = {
+export type TodoSlice = {
   status: "idle" | "loading" | "finished" | "error";
   todos: Todo[];
 };
